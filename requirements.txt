@@ -1,0 +1,5 @@
+# to install run: `$ pip install -r /path/to/requirements.txt`
+yfinance~=0.2.37  # Tilde (~) allows for compatible bugfix/patch releases
+pandas~=2.2.1
+numpy~=1.26.4
+matplotlib~=3.8.3
