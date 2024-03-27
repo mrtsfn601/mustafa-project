@@ -24,7 +24,7 @@ The stock price chart is a graphical representation of a stock's price movement 
 
 <details>
   <summary>Show</summary>
-  <img src="resources/historical_financial_data.jpeg" alt="Plot AAPL Historical Financial Data" style="float: left; margin-right: 10px; border: 2px solid white;" width="500"/>
+  <img src="resources/historical_financial_data_visualization.jpeg" alt="Historical Financial Data Visualization" style="float: left; margin-right: 10px; border: 2px solid white;"/>
 </details>
 
 ## Roadmap
