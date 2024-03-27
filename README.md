@@ -38,4 +38,4 @@ The stock price chart is a graphical representation of a stock's price movement 
 
 > Meet Mustafa, the Grand Bazaar's trading wizard, who can sell sand in the desert and predict prices with the accuracy of a weather forecast: always sunny unless it rains. Also, Mustafa is a fictional character created by the project author to sprinkle joy on the project's journey.
 
-<img src="resources/mustafa_face.jpg" alt="Mustafa" style="float: left; margin-right: 10px; border: 2px solid white; border-radius:50%" width="250"/>
+<img src="resources/mustafa.png" alt="Mustafa" style="float: left; margin-right: 10px; border: 2px solid white; border-radius:50%" width="250"/>
