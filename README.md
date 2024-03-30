@@ -4,10 +4,16 @@ Mustafa Project - is a financial market analysis and stock price prediction proj
 
 ### Table of Contents
 
+Mustafa Project:
+
 - [About](#about)
 - [Features](#features)
 - [Roadmap](#roadmap)
 - [Who is Mustafa?](#who-is-mustafa)
+
+Additional resources:
+
+- [Wiki](docs/WIKI.md)
 
 ## About
 
