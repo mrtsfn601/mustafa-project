@@ -14,8 +14,7 @@
 ## Price
 
 - Price - the amount of money required to purchase a stock.
-- Price per share - the price of a single share of stock.
-   - In other words, it is how much a single share of a company's stock costs. 
+- Price per share - the price of a single share of stock. In other words, it is how much a single share of a company's stock costs. 
 - Bid Price - the highest price a buyer is willing to pay for a stock.
 - Ask Price - the lowest price a seller is willing to accept for a stock.
 - Last Price - the price at which the last trade occurred.
