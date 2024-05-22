@@ -134,6 +134,6 @@ A PEG ratio of 1 typically suggests that a stock is fairly valued, meaning its p
 - Technical Analysis - is the study of market action, primarily through the use of charts, for the purspose of forecasting future price trends.
 - Market Action - includes the three principal sources of information - price, voulme, and open interest. (Open interest is used only in futures and options.)
 - Philosophy of Rationale - market action discounts everything (anything that can possibly affect the price - fundamentally, politically, psycologically, or otherwise - is actually reflected in the price of that market); prices move in trends. 
-- Supply and demand - the underlying forces of supply and demand, the economic fundamentals of a market, that cause bull and bear markets. The charts do not in themselves cause markets to move up or down.
+- Chart - The underlying forces of supply and demand, the economic fundamentals of a market, that cause bull and bear markets. The charts do not in themselves cause markets to move up or down. The charts simply refelect the bullish or bearish psycology of the market.
 
 [Top](#wiki)
