@@ -27,6 +27,7 @@
 - Intraday Price - the price of a stock during regular trading hours.
 - Pre-market Price - the price of a stock before the market opens.
 - After-hours Price - the price of a stock after the market closes.
+[Up](#wiki)
 
 ## Value
 
