@@ -10,6 +10,7 @@
 - [Shares](#shares)
 - [Dividends](#dividends)
 - [Ratios](#ratios)
+- [Technical Analysis](#technical-analysis)
 
 ## Price
 
