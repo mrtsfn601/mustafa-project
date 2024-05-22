@@ -27,7 +27,8 @@
 - Intraday Price - the price of a stock during regular trading hours.
 - Pre-market Price - the price of a stock before the market opens.
 - After-hours Price - the price of a stock after the market closes.
-[Up](#wiki)
+
+[Top](#wiki)
 
 ## Value
 
@@ -40,6 +41,8 @@
 - Face Value - the value of a stock as stated on the stock certificate, which may differ from the market price.
 - Enterprise Value - the total value of a company, including its market capitalization, debt, and cash holdings, which provides a more comprehensive view of a company's worth.
 - Market Capitalization - the total value of a company's outstanding shares of stock, calculated by multiplying the current price per share by the total number of shares outstanding.
+
+[Top](#wiki)
 
 ## Earnings
 
@@ -65,10 +68,14 @@ Revenue = Price per Unit x Number of Units Sold
 - Revenue Growth - the rate at which a company's revenue increases over time.
 - Profit Margin - a financial ratio that indicates the percentage of revenue that remains as profit after deducting expenses.
 
+[Top](#wiki)
+
 ## Shares
 
 - Stock Split - an action by a company to increase the number of its outstanding shares by dividing each share, which reduces the price per share.
 - Reverse Stock Split - an action by a company to decrease the number of its outstanding shares by combining multiple shares into a single share, which increases the price per share.
+
+[Top](#wiki)
 
 ## Dividends
 
@@ -76,6 +83,8 @@ Revenue = Price per Unit x Number of Units Sold
 - Stock Dividend - a dividend paid to shareholders in the form of additional shares of stock rather than cash.
 - Cash Dividend - a dividend paid to shareholders in the form of cash.
 - Dividend Yield - a financial ratio that indicates the annual dividend income as a percentage of the stock's market price. In other words, it is how much a company pays out in dividends each year relative to its share price.
+
+[Top](#wiki)
 
 ## Ratios
 
@@ -87,6 +96,8 @@ Revenue = Price per Unit x Number of Units Sold
 - Price-Book Ratio (P/B Ratio) - a financial ratio that compares a company's stock price to its book value per share, which indicates how much investors are willing to pay for each dollar of book value.
 - Price-Cash Flow Ratio (P/CF Ratio) - a financial ratio that compares a company's stock price to its cash flow per share, which indicates how much investors are willing to pay for each dollar of cash flow.
 - Price-Earnings to Growth Ratio (PEG Ratio) - a financial ratio that compares a company's P/E ratio to its earnings growth rate, which indicates the company's valuation relative to its growth prospects.
+
+[Top](#wiki)
 
 ### PEG Ratio (Price-Earnings to Growth Ratio)
 
@@ -116,9 +127,13 @@ PEG Ratio = P/E Ratio / Earnings Growth Rate
 
 A PEG ratio of 1 typically suggests that a stock is fairly valued, meaning its price reflects its expected earnings growth. A PEG ratio below 1 might indicate that a stock is undervalued, while a ratio above 1 could suggest it's overvalued.
 
+[Top](#wiki)
+
 ## Technical Analysis
 
 - Technical Analysis - is the study of market action, primarily through the use of charts, for the purspose of forecasting future price trends.
 - Market Action - includes the three principal sources of information - price, voulme, and open interest. (Open interest is used only in futures and options.)
 - Philosophy of Rationale - market action discounts everything (anything that can possibly affect the price - fundamentally, politically, psycologically, or otherwise - is actually reflected in the price of that market); prices move in trends. 
 - Supply and demand - the underlying forces of supply and demand, the economic fundamentals of a market, that cause bull and bear markets. The charts do not in themselves cause markets to move up or down.
+
+[Top](#wiki)
