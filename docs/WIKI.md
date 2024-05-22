@@ -1,7 +1,5 @@
 # Wiki
 
-> "Price is what you pay. Value is what you get." - Warren Buffett
-
 ### Table of Contents
 
 - [Price](#price)
@@ -14,6 +12,8 @@
 
 ## Price
 
+> "Price is what you pay. Value is what you get." - Warren Buffett
+ 
 - Price - the amount of money required to purchase a stock.
 - Price per share - the price of a single share of stock. In other words, it is how much a single share of a company's stock costs. 
 - Bid Price - the highest price a buyer is willing to pay for a stock.
