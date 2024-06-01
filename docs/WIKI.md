@@ -138,6 +138,9 @@ A PEG ratio of 1 typically suggests that a stock is fairly valued, meaning its p
 - Philosophy of Rationale - market action discounts everything (anything that can possibly affect the price - fundamentally, politically, psycologically, or otherwise - is actually reflected in the price of that market); prices move in trends. 
 - Chart - The underlying forces of supply and demand, the economic fundamentals of a market, that cause bull and bear markets. The charts do not in themselves cause markets to move up or down. The charts simply refelect the bullish or bearish psycology of the market.
 - Market Makers - are financial intermediaries who ensure liquidity in financial markets by providing liquidity, reducing price volatility, ensuring market efficiency. Their main activities include: quote Bid and Ask Prices, hold and maintain securities, facilitate trades, and hedge risks (options, futures, etc.).
-
+- Descriptive statistics - the graphical presentation of data, such as the price data on a standard bar chart. 
+- Inductive statistics - generalizations, predictions, or extrapolations that are inferred from the data. 
+- Uptrend - is a situation in which each successive really close higher than the previous really high, and each successive rally low also closes higher than the previous rally low. in other words, an uptrend has a pattern of rising peaks and troughs. 
+- Downtrend - is the opposite to the uptrend, with successively lower peaks and troughs. 
 
 [Top](#wiki)
