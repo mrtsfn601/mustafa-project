@@ -8,6 +8,7 @@
 - [Shares](#shares)
 - [Dividends](#dividends)
 - [Ratios](#ratios)
+   - [PEG Ratio (Price-Earnings to Growth Ratio)](#peg-ratio-price-earnings-to-growth-ratio)
 - [Technical Analysis](#technical-analysis)
 
 ## Price
@@ -127,6 +128,8 @@ PEG Ratio = P/E Ratio / Earnings Growth Rate
 
 A PEG ratio of 1 typically suggests that a stock is fairly valued, meaning its price reflects its expected earnings growth. A PEG ratio below 1 might indicate that a stock is undervalued, while a ratio above 1 could suggest it's overvalued.
 
+PEG Ratio valuation is not perfect, used as a quick check to a stock's value, and only when Earnings are consistently increasing. 
+
 [Top](#wiki)
 
 ## Technical Analysis
@@ -144,3 +147,4 @@ A PEG ratio of 1 typically suggests that a stock is fairly valued, meaning its p
 - Downtrend - is the opposite to the uptrend, with successively lower peaks and troughs. 
 
 [Top](#wiki)
+
