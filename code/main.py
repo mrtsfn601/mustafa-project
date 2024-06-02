@@ -1,11 +1,14 @@
-import matplotlib.pyplot as plt
 from pprint import pprint
+import matplotlib.pyplot as plt
 import yfinance as yf
 
 import utils.financials as fin
+import utils.visualization as vis
 
-ticker_symbol = 'AAPL'
+ticker_symbol = 'TSLA'
 ticker = yf.Ticker(ticker_symbol)
+peg_ratio = ticker.info['pegRatio']
+print(f'The PEG ratio of {ticker_symbol} is {peg_ratio}')
 
 """
 :param period: '1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'
@@ -13,20 +16,19 @@ ticker = yf.Ticker(ticker_symbol)
 :param start: start date, e.g. '2021-01-01'
 :param end: end date, e.g. '2024-02-28'
 """
-prices = ticker.history(period='max', interval='1mo')
+# prices = ticker.history(period='10y', interval='1wk')
+# vis.plot_financial_chart(ticker, prices, sma_values=[20, 50, 100, 150, 200])
 
-prices.reset_index(inplace=True)
-prices.plot(x='Date', y='Close', title=ticker_symbol + ' Stock Prices')
-plt.show()
+# operating_cash_flow = fin.get_operating_cash_flow(ticker, annual=True).iloc[0]
+# print(f'The operating cash flow for {ticker_symbol} is {operating_cash_flow}')
 
-operating_cash_flow = fin.get_operating_cash_flow(ticker, annual=True).iloc[0]
-print(f'The operating cash flow for {ticker_symbol} is {operating_cash_flow}')
 
 # pprint(ticker.info)
 # print(ticker.actions)  # actions (dividends and splits)
 # print(ticker.dividends)
 # print(ticker.splits)
-# print(ticker.financials)
+print(ticker.financials)
+# print(ticker.earnings)
 # print(ticker.balance_sheet)
 # print(ticker.cashflow)
 # print(ticker.get_sustainability())
