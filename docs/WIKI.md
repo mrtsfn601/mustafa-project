@@ -145,6 +145,7 @@ PEG Ratio valuation is not perfect, used as a quick check to a stock's value, an
 - Inductive statistics - generalizations, predictions, or extrapolations that are inferred from the data. 
 - Uptrend - is a situation in which each successive really close higher than the previous really high, and each successive rally low also closes higher than the previous rally low. in other words, an uptrend has a pattern of rising peaks and troughs. 
 - Downtrend - is the opposite to the uptrend, with successively lower peaks and troughs. 
+- Volume - is the total amount of trading activity in the market for that day.
 
 [Top](#wiki)
 
