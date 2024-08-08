@@ -72,3 +72,48 @@ def get_intrinsic_value(ticker, years=20):
     shares_outstanding = ticker.info['sharesOutstanding']
     intrinsic_value = dcf / shares_outstanding
     return intrinsic_value
+
+
+def get_price_per_share(ticker):
+    """
+    Get the price per share of a business entity.
+    :param ticker: yfinance.Ticker object
+    :return: The price per share
+    """
+    return ticker.info['previousClose']
+
+
+def get_earnings_per_share_ttm(ticker):
+    """
+    Get the earnings per share of a business entity over the trailing twelve months (TTM).
+    :param ticker: yfinance.Ticker object
+    :return: The earnings per share TTM
+    """
+    return ticker.info['trailingEps']
+
+
+def get_annual_eps_growth_rate(ticker, years=5):
+    """
+    Calculate the Compound Annual Growth Rate (CAGR) of the earnings per share over a given number of years.
+    :param ticker: yfinance.Ticker object
+    :param years: The number of years to calculate the growth rate over
+    :return: The growth rate of the earnings per share
+    """
+    eps = ticker.earnings['Earnings'].iloc[:years]
+    beginning_value = eps.iloc[-years]
+    ending_value = eps.iloc[0]
+    cagr = (ending_value / beginning_value) ** (1 / years) - 1
+    return cagr
+
+
+def get_peg_ratio(ticker, years=5):
+    """
+    Calculate the PEG ratio (Price/Earnings to Growth ratio) of a business entity.
+    :param ticker: yfinance.Ticker object
+    :param years: The number of years to calculate the PEG ratio over
+    :return: The PEG ratio of the business entity
+    """
+    pe_ratio = ticker.info['trailingPE']
+    eps_growth_rate = get_annual_eps_growth_rate(ticker, years)
+    peg_ratio = pe_ratio / eps_growth_rate
+    return peg_ratio

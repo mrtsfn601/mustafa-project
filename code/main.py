@@ -3,12 +3,17 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 
 import utils.financials as fin
+import utils.dcf as dc
 import utils.visualization as vis
 
 ticker_symbol = 'TSLA'
 ticker = yf.Ticker(ticker_symbol)
+
+intrinsic_value = dc.dcf(ticker)
+
 peg_ratio = ticker.info['pegRatio']
 print(f'The PEG ratio of {ticker_symbol} is {peg_ratio}')
+print(f'The PEG ratio of {ticker_symbol} is {fin.get_peg_ratio(ticker)}')
 
 """
 :param period: '1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'
@@ -27,7 +32,7 @@ print(f'The PEG ratio of {ticker_symbol} is {peg_ratio}')
 # print(ticker.actions)  # actions (dividends and splits)
 # print(ticker.dividends)
 # print(ticker.splits)
-print(ticker.financials)
+# print(ticker.financials)
 # print(ticker.earnings)
 # print(ticker.balance_sheet)
 # print(ticker.cashflow)

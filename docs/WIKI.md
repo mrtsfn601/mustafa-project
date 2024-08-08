@@ -102,33 +102,33 @@ Revenue = Price per Unit x Number of Units Sold
 
 ### PEG Ratio (Price-Earnings to Growth Ratio)
 
-The PEG ratio is a valuation metric that compares a company's price-to-earnings (P/E) ratio to its earnings growth rate. This gives investors a way to see if they are paying too much or too little for a stock relative to its potential growth.
+The PEG ratio is a valuation metric that enhances the traditional price-to-earnings (P/E) ratio by incorporating a company's earnings growth rate. It helps investors determine if they are paying too much or too little for a stock relative to its growth potential.
 
-The Price-to-Earnings (P/E) trailing twelve months (TTM) ratio tells you how much investors are willing to pay for each dollar of earnings.
+The Price-to-Earnings (P/E) ratio, calculated over the trailing twelve months (TTM), indicates how much investors are willing to pay for each dollar of earnings.
 
 ```
 P/E Ratio (TTM) = Price per Share / Earnings per Share (TTM)
 ```
 
-Where `Price per Share` is the current price of a stock, `Earnings per Share (TTM)` is the company's profit divided by the number of outstanding shares over the trailing twelve months.
+Here, `Price per Share` refers to the current stock price, while `Earnings per Share (TTM)` is the company's profit divided by the number of outstanding shares over the past twelve months.
 
-The Annual Earnings per Share Growth Rate (Annual EPS Growth or Earnings Growth Rate) tells you how much a company's earnings are growing year over year.
+The Annual Earnings per Share Growth Rate (Annual EPS Growth or Earnings Growth Rate) measures how much a company's earnings are increasing year over year.
 
 ```
-Annual EPS Growth = (Current EPS - Previous EPS) / Previous EPS * 100
+Annual EPS Growth Rate = (Current EPS - Previous EPS) / Previous EPS * 100
 ```
 
-Where `Current EPS` is the most recent earnings per share, `Previous EPS` is the earnings per share from the previous year, `100` is used to convert the result to a percentage.
+Here, `Current EPS` represents the most recent earnings per share, and `Previous EPS` is the earnings per share from the previous year. Multiplying by `100` converts the result to a percentage.
 
 By comparing the two, you can see if a stock is overvalued or undervalued.
 
 ```
-PEG Ratio = P/E Ratio / Earnings Growth Rate
+PEG Ratio = P/E Ratio / Annual EPS Growth Rate
 ```
 
 A PEG ratio of 1 typically suggests that a stock is fairly valued, meaning its price reflects its expected earnings growth. A PEG ratio below 1 might indicate that a stock is undervalued, while a ratio above 1 could suggest it's overvalued.
 
-PEG Ratio valuation is not perfect, used as a quick check to a stock's value, and only when Earnings are consistently increasing. 
+It's important to note that the PEG ratio is most effective when applied to companies with consistent earnings growth. It should be used as a quick check rather than a definitive measure of a stock's value. Other factors should also be considered when evaluating a stock's true worth.
 
 [Top](#wiki)
 
