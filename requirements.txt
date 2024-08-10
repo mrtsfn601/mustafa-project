@@ -1,13 +1,22 @@
 # to install run: `$ pip install -r requirements.txt`
 # tilde (~) allows for compatible bugfix/patch releases
+# https://pypi.org/project/beautifulsoup4/
 beautifulsoup4~=4.12.3
 # https://github.com/lit26/finvizfinance
 # https://finvizfinance.readthedocs.io/en/latest/
+# https://pypi.org/project/finvizfinance/
 finvizfinance~= 1.0.1
-matplotlib~=3.8.3
+# https://pypi.org/project/matplotlib/
+matplotlib~=3.9.0
+# https://pypi.org/project/mplfinance/
 mplfinance~=0.12.10b0
-numpy~=1.26.4
-pandas~=2.2.1
-prettytable~=0.7.2
+# https://pypi.org/project/numpy/
+numpy~=2.0.1
+# https://pypi.org/project/pandas/
+pandas~=2.2.2
+# https://pypi.org/project/prettytable/
+prettytable~=3.10.2
+# https://pypi.org/project/requests/
 requests~=2.32.3
-yfinance~=0.2.37
+# https://pypi.org/project/yfinance/
+yfinance~=0.2.41
