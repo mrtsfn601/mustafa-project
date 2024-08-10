@@ -19,7 +19,6 @@ def discounted_cash_flow(ticker_symbol):
 
     cash = yf_ticker.quarterly_balance_sheet.loc['Cash Cash Equivalents And Short Term Investments'].iloc[0] / 1_000_000
 
-    print(fv_ticker.ticker_fundament())
     cash_flow_1_5y = float(fv_ticker.ticker_fundament()['EPS next 5Y'].strip('%'))
     cash_flow_6_10y = min(cash_flow_1_5y, 15.00)
     cash_flow_10_20y = min(cash_flow_6_10y, 4.00)
@@ -29,7 +28,25 @@ def discounted_cash_flow(ticker_symbol):
     if shares_outstanding_str[-1] == 'B':  # in billions
         shares_outstanding *= 1_000
 
+    beta = float(fv_ticker.ticker_fundament()['Beta'])
+    discount_rate = 5.2
+    if 0.8 < beta <= 1.0:
+        discount_rate = 5.9
+    elif 1.0 < beta <= 1.1:
+        discount_rate = 6.3
+    elif 1.1 < beta <= 1.2:
+        discount_rate = 6.6
+    elif 1.2 < beta <= 1.3:
+        discount_rate = 7.0
+    elif 1.3 < beta <= 1.4:
+        discount_rate = 7.4
+    elif 1.4 < beta <= 1.5:
+        discount_rate = 7.7
+    elif 1.5 < beta:
+        discount_rate = 8.1
+
     table = PrettyTable()
+    table.title = f"${ticker_symbol} Intrinsic Value using Discounted Cash Flow"
     table.field_names = ["Metric", "Unit", "Value"]
     table.add_row(["Operating Cash Flow (TTM)", "$M", operating_cash_flow_ttm])
     table.add_row(["Short Term Debt (Quarter)", "$M", short_term_debt])
@@ -40,6 +57,7 @@ def discounted_cash_flow(ticker_symbol):
     table.add_row(["Cash Flow Growth Rate  6-10 Years", "%", cash_flow_6_10y])
     table.add_row(["Cash Flow Growth Rate 10-20 Years", "%", cash_flow_10_20y])
     table.add_row(["Shares Outstanding", "M", shares_outstanding])
+    table.add_row(["Discount Rate", "%", discount_rate])
     table.align["Metric"] = "l"
     table.align["Value"] = "r"
     print(table)
