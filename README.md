@@ -17,7 +17,7 @@ Additional resources:
 
 ## About
 
-The project is developed using _Python_ programming language, _Yahoo Finance_ and _Alpha Vantage_ APIs to get historical stock data, _Prophet_ API for stock price forecasting, _Pandas_ and _Numpy_ libraries for data manipulation, _Matplotlib_ and _Mplfinance_ libraries for data visualization.
+The project is developed using _Python_ programming language, _Yahoo Finance_, _FinViz Finance_ and _Alpha Vantage_ APIs to get historical stock data, _Prophet_ API for stock price forecasting, _Pandas_ and _Numpy_ libraries for data manipulation, _Matplotlib_ and _Mplfinance_ libraries for data visualization.
 
 ## Features
 

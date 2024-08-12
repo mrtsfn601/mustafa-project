@@ -9,7 +9,7 @@ import utils.visualization as vis
 ticker_symbol = 'TSLA'
 ticker = yf.Ticker(ticker_symbol)
 
-iv.discounted_cash_flow('TSLA')
+iv.discounted_cash_flow_formula('TSLA')
 
 # peg_ratio = ticker.info['pegRatio']
 # print(f'The PEG ratio of {ticker_symbol} is {peg_ratio}')
