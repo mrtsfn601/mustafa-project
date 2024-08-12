@@ -6,7 +6,7 @@ import utils.financials as fin
 import utils.intrinsic_value as iv
 import utils.visualization as vis
 
-ticker_symbol = 'TSLA'
+ticker_symbol = 'AMZN'
 ticker = yf.Ticker(ticker_symbol)
 
 iv.discounted_cash_flow_formula('TSLA')
