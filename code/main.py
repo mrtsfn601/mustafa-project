@@ -1,33 +1,20 @@
 from pprint import pprint
-import matplotlib.pyplot as plt
-import yfinance as yf
-
-import utils.financials as fin
 import utils.intrinsic_value as iv
 import utils.visualization as vis
+import yfinance as yf
 
 ticker_symbol = 'AMZN'
+# watchlist = ['AAPL', 'AMZN', 'CRM', 'GOOGL', 'META', 'MSFT', 'NKE', 'NVDA', 'PEP', 'TSLA', 'UNH']
+watchlist = [ticker_symbol]
+
+# Calculate Intrinsic Value using Discounted Cash Flow (DCF) method
+for ticker_symbol in watchlist:
+    iv.discounted_cash_flow_formula(ticker_symbol)
+
+# Print the chart price of the stock
+vis.plot_financial_chart(ticker_symbol)
+
 ticker = yf.Ticker(ticker_symbol)
-
-iv.discounted_cash_flow_formula('TSLA')
-
-# peg_ratio = ticker.info['pegRatio']
-# print(f'The PEG ratio of {ticker_symbol} is {peg_ratio}')
-# print(f'The PEG ratio of {ticker_symbol} is {fin.get_peg_ratio(ticker)}')
-
-"""
-:param period: '1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'
-:param interval: '1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', '1d', '5d', '1wk', '1mo', '3mo'
-:param start: start date, e.g. '2021-01-01'
-:param end: end date, e.g. '2024-02-28'
-"""
-# prices = ticker.history(period='10y', interval='1wk')
-# vis.plot_financial_chart(ticker, prices, sma_values=[20, 50, 100, 150, 200])
-
-# operating_cash_flow = fin.get_operating_cash_flow(ticker, annual=True).iloc[0]
-# print(f'The operating cash flow for {ticker_symbol} is {operating_cash_flow}')
-
-
 # pprint(ticker.info)
 # print(ticker.actions)  # actions (dividends and splits)
 # print(ticker.dividends)

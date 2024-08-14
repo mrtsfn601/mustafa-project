@@ -3,9 +3,11 @@ from finvizfinance.quote import finvizfinance
 from prettytable import PrettyTable
 
 
-def discounted_cash_flow_formula(ticker_symbol):
+def discounted_cash_flow_formula(ticker_symbol, years=20):
     """
     Calculate the intrinsic value of a business using the Discounted Cash Flow (DCF) method.
+    :param ticker_symbol: the stock ticker symbol
+    :param years: the number of years to calculate the intrinsic value over, max 20 years
     Implementation notes:
     - $ amounts are converted to millions.
     """
@@ -48,7 +50,7 @@ def discounted_cash_flow_formula(ticker_symbol):
     # pre-calculate the cash flow growth rates for each year
     cash_flow_growth_rates = [cash_flow_1_5y] * 5 + [cash_flow_6_10y] * 5 + [cash_flow_10_20y] * 10
 
-    for year in range(20):
+    for year in range(years):
         cash_flow_growth_rate = cash_flow_growth_rates[year]
         operating_cash_flow_projected *= (1 + cash_flow_growth_rate / 100)
         discount_factor /= (1 + discount_rate / 100)
@@ -76,7 +78,7 @@ def discounted_cash_flow_formula(ticker_symbol):
     table.add_row(["Cash Flow Growth Rate 10-20 Years", f"{cash_flow_10_20y:.2f}", "%"])
     table.add_row(["Shares Outstanding", f"{shares_outstanding:,.2f}", "M"])
     table.add_row(["Discount Rate", f"{discount_rate:.2f}", "%"])
-    table.add_row(["Operating Cash Flow Projected (20 Years)", f"{discounted_cash_flow:,.2f}", "$M"])
+    table.add_row([f"Operating Cash Flow Projected (${years} Years)", f"{discounted_cash_flow:,.2f}", "$M"])
     table.add_row(["Intrinsic Value of a Share", f"{intrinsic_value:.2f}", "$"])
     table.add_row(["Share Price (Last Close)", f"{share_price:.2f}", "$"])
     table.add_row([overpriced_or_underpriced, f"{stock_price_delta:.2f}", "$"])
