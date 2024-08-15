@@ -2,6 +2,8 @@
 # tilde (~) allows for compatible bugfix/patch releases
 # https://pypi.org/project/beautifulsoup4/
 beautifulsoup4~=4.12.3
+# https://pypi.org/project/colorama/
+colorama~=0.4.6
 # https://github.com/lit26/finvizfinance
 # https://finvizfinance.readthedocs.io/en/latest/
 # https://pypi.org/project/finvizfinance/
