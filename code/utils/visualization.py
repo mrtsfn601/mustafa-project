@@ -31,3 +31,11 @@ def plot_financial_chart(ticker_symbol, period='10y', interval='1wk', start=None
         sma_data = data['Close'].rolling(window=sma).mean()
         add_plots.append(mpf.make_addplot(sma_data))
     mpf.plot(data, type=chart_type, style='yahoo', title=ticker.info['symbol'] + ' Stock Prices', addplot=add_plots)
+
+
+def plot_operating_cash_flow(ticker_symbol):
+    ticker = yf.Ticker(ticker_symbol)
+    operating_cash_flow = ticker.cashflow.loc['Operating Cash Flow']
+    print(operating_cash_flow)
+    # operating_cash_flow.plot(title=f"{ticker_symbol} Operating Cash Flow")
+    # plt.show()
