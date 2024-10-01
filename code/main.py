@@ -1,18 +1,20 @@
 from pprint import pprint
 import utils.intrinsic_value as iv
+import utils.sp500 as sp500
 import utils.visualization as vis
 import yfinance as yf
 
 ticker_symbol = 'AMZN'
-# watchlist = ['AAPL', 'AMZN', 'CRM', 'GOOGL', 'META', 'MSFT', 'NKE', 'NVDA', 'PEP', 'TSLA', 'UNH']
-watchlist = [ticker_symbol]
+tickers = [ticker_symbol]
+# tickers = ['AAPL', 'ADAP', 'AMZN', 'AZN', 'CRM', 'GOOGL', 'JNJ', 'MA', 'MCD', 'META', 'MSFT', 'NKE', 'NVDA', 'PEP', 'TSLA', 'UNH']
+# tickers = sp500.sp500_tickers()
 
 # Calculate Intrinsic Value using Discounted Cash Flow (DCF) method
-for ticker_symbol in watchlist:
-    iv.discounted_cash_flow_formula(ticker_symbol)
+for ticker_symbol in tickers:
+    iv.discounted_cash_flow_formula(ticker_symbol, years=20, filter_out=True)
 
 # Print the chart price of the stock
-vis.plot_financial_chart(ticker_symbol)
+# vis.plot_financial_chart(ticker_symbol)
 
 ticker = yf.Ticker(ticker_symbol)
 # pprint(ticker.info)

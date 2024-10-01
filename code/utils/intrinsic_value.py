@@ -1,19 +1,49 @@
+import pandas as pd
 import yfinance as yf
 from finvizfinance.quote import finvizfinance
 from prettytable import PrettyTable
 from colorama import Fore, Style
 
 
-def discounted_cash_flow_formula(ticker_symbol, years=20):
+def discounted_cash_flow_formula(ticker_symbol, years=20, filter_out=True):
     """
     Calculate the intrinsic value of a business using the Discounted Cash Flow (DCF) method.
     :param ticker_symbol: the stock ticker symbol
     :param years: the number of years to calculate the intrinsic value over, max 20 years
+    :param filter_out: filter out stocks that are not growing consistently
     Implementation notes:
     - $ amounts are converted to millions.
     """
+    print(ticker_symbol)
     yf_ticker = yf.Ticker(ticker_symbol)
-    fv_ticker = finvizfinance(ticker_symbol)
+    try:
+        fv_ticker = finvizfinance(ticker_symbol)  # BRK.B
+    except Exception as e:
+        print(f"Error occurred {e} with {ticker_symbol}.")
+        ticker_symbol = ticker_symbol.replace('.', '-')
+        try:
+            fv_ticker = finvizfinance(ticker_symbol)  # BRK-B
+        except Exception as e:
+            print(f"Error occurred again: {e}. Unable to fetch data for ticker symbol {ticker_symbol}.")
+            return
+
+    # if country is not USA, skip
+    if filter_out and fv_ticker.ticker_fundament()['Country'] != 'USA':
+        print(f"Skipping {ticker_symbol} due to country.")
+        return
+
+    # if business is not in the given list of sectors, skip
+    good_sectors = ['Communication Services', 'Consumer Cyclical', 'Consumer Defensive', 'Technology', 'Healthcare']
+    sector = fv_ticker.ticker_fundament()['Sector']
+    if filter_out and sector not in good_sectors:
+        print(f"Skipping {ticker_symbol} due to {sector} sector.")
+        return
+
+    # if business is in the given list of industries, skip
+    bad_industries = ['Auto Parts', 'Entertainment']
+    if filter_out and fv_ticker.ticker_fundament()['Industry'] in bad_industries:
+        print(f"Skipping {ticker_symbol} due to industry.")
+        return
 
     # Operating Cash Flow (Current TTM)
     operating_cash_flow_current = sum(
@@ -28,9 +58,18 @@ def discounted_cash_flow_formula(ticker_symbol, years=20):
     cash = get(yf_ticker.quarterly_balance_sheet, 'Cash Cash Equivalents And Short Term Investments') / 1_000_000
 
     # Growth Rates: 1-5 Years, 6-10 Years, 10-20 Years
-    cash_flow_1_5y = float(fv_ticker.ticker_fundament()['EPS next 5Y'].strip('%'))
+    try:
+        cash_flow_1_5y = float(fv_ticker.ticker_fundament()['EPS next 5Y'].strip('%'))
+    except ValueError:
+        print(f"'EPS next 5Y' not found for {ticker_symbol}. Setting value to 0.")
+        cash_flow_1_5y = 0.0
     cash_flow_6_10y = min(cash_flow_1_5y, 15.00)
     cash_flow_10_20y = min(cash_flow_6_10y, 4.00)
+
+    # if growth rate is less than criteria, skip
+    if filter_out and cash_flow_1_5y < 10:
+        print(f"Skipping {ticker_symbol} due to low {cash_flow_1_5y:.2f}% growth rate (EPS next 5Y).")
+        return
 
     # Shares Outstanding
     shares_outstanding_str = fv_ticker.ticker_fundament()['Shs Outstand']  # ex: 1.65M, 1.65B
@@ -39,9 +78,9 @@ def discounted_cash_flow_formula(ticker_symbol, years=20):
         shares_outstanding *= 1_000  # convert to millions
 
     # Discount Rate for US Market
-    risk_free_rate = 4.51  # source: http://www.market-risk-premia.com/us.html
+    risk_free_rate = 4.09  # source: http://www.market-risk-premia.com/us.html
     beta = float(fv_ticker.ticker_fundament()['Beta'])
-    implied_market_risk_premium = 2.47  # source: http://www.market-risk-premia.com/us.html
+    implied_market_risk_premium = 2.51  # source: http://www.market-risk-premia.com/us.html
     discount_rate = risk_free_rate + beta * implied_market_risk_premium
 
     # Operating Cash Flow (Projected)
@@ -59,16 +98,34 @@ def discounted_cash_flow_formula(ticker_symbol, years=20):
 
     # Intrinsic Value vs Share Price (Current)
     intrinsic_value = (discounted_cash_flow + cash - debt) / shares_outstanding
-    share_price = yf_ticker.history(period='1d')['Close'].iloc[0]
-    share_price_diff = share_price - intrinsic_value
+    try:
+        share_price = yf_ticker.history(period='1d')['Close'].iloc[0]
+    except IndexError:
+        print(f"No closing price data available for ticker symbol {ticker_symbol}.")
+        return
+    share_price_diff_abs = share_price - intrinsic_value  # $ amount
+    share_price_diff_rel = share_price_diff_abs / share_price * 100  # % amount
     is_overpriced = share_price > intrinsic_value
 
+    # if share price is not discounted, skip
+    if filter_out and -20 < share_price_diff_rel:
+        print(f"Skipping {ticker_symbol} due to low {share_price_diff_rel:.2f}% discount.")
+        return
+
     # Where is the share price in relation to the SMAs
-    share_price_history = yf_ticker.history(period='5y', interval='1wk')['Close']
+    try:
+        share_price_history = yf_ticker.history(period='5y', interval='1d')['Close']
+    except IndexError:
+        share_price_history = yf_ticker.history(period='max', interval='1d')['Close']
     sma_50 = share_price_history.rolling(window=50).mean().iloc[-1]
     sma_100 = share_price_history.rolling(window=100).mean().iloc[-1]
     sma_150 = share_price_history.rolling(window=150).mean().iloc[-1]
     sma_200 = share_price_history.rolling(window=200).mean().iloc[-1]
+
+    # if share price is above 50 SMA, skip
+    if filter_out and share_price > sma_50:
+        print(f"Skipping {ticker_symbol} due to being above 50 SMA.")
+        return
 
     table = PrettyTable()
     table.title = f"${ticker_symbol} Intrinsic Value using Discounted Cash Flow"
@@ -84,8 +141,8 @@ def discounted_cash_flow_formula(ticker_symbol, years=20):
     table.add_row([f"Operating Cash Flow Projected ({years} Years)", f"{discounted_cash_flow:,.2f}", "$M"])
     table.add_row(["Share Price (Last Close)", f"{share_price:.2f}", "$"])
     table.add_row([decor(is_overpriced, "Intrinsic Value"), f"{intrinsic_value:.2f}", "$"])
-    table.add_row([decor(is_overpriced, "Overpriced", "Underpriced"), f"{share_price_diff:.2f}", "$"])
-    table.add_row([decor(is_overpriced, "Premium", "Discount"), f"{share_price_diff / share_price * 100:.2f}", "%"])
+    table.add_row([decor(is_overpriced, "Overpriced", "Underpriced"), f"{share_price_diff_abs:.2f}", "$"])
+    table.add_row([decor(is_overpriced, "Premium", "Discount"), f"{share_price_diff_rel:.2f}", "%"])
     table.add_row([decor(share_price > sma_50, "Above", "Below") + "  50 SMA", f"{sma_50:.2f}", "$"])
     table.add_row([decor(share_price > sma_100, "Above", "Below") + " 100 SMA", f"{sma_100:.2f}", "$"])
     table.add_row([decor(share_price > sma_150, "Above", "Below") + " 150 SMA", f"{sma_200:.2f}", "$"])
@@ -99,7 +156,11 @@ def discounted_cash_flow_formula(ticker_symbol, years=20):
 
 def get(dataframe, key, index=0):
     try:
-        return dataframe.loc[key].iloc[index]
+        value = dataframe.loc[key].iloc[index]
+        if pd.isna(value):
+            print(f"'{key}' at index {index} is NaN in the DataFrame. Setting value to 0.")
+            return 0
+        return value
     except KeyError:
         print(f"'{key}' not found in the DataFrame. Setting value to 0.")
         return 0
